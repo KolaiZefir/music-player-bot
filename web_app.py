@@ -174,6 +174,7 @@ def default_cover():
 # ---------- ВЕБХУК ДЛЯ ТЕЛЕГРАМА ----------
 @app.route('/webhook', methods=['POST'])
 def webhook():
+    """Обработчик сообщений от Telegram"""
     update = telegram.Update.de_json(request.get_json(force=True), bot)
     dispatcher.process_update(update)
     return 'ok', 200
